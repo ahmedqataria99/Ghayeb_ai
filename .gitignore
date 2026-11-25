@@ -20,3 +20,5 @@ data/
 # Editors
 .vscode/
 .idea/
+.vercel
+.env*
