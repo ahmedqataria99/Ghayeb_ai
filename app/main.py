@@ -90,13 +90,16 @@ class MaterialDemandResponse(BaseModel):
 
 
 class ModelInfoResponse(BaseModel):
+    model_name: str
     model_version: str
     model_type: str
+    forecast_horizon_days: int
     feature_count: int
     feature_names: List[str]
     feature_order: List[str]
     model_sha256: str
     sklearn_version: str
+    evaluation_metrics: Dict[str, object]
 
 
 model = None
@@ -241,13 +244,20 @@ def model_info() -> ModelInfoResponse:
     if model is None:
         raise HTTPException(status_code=503, detail="Model is not loaded")
     return ModelInfoResponse(
+        model_name="HistGradientBoostingRegressor",
         model_version=model_version,
         model_type=f"{type(model).__module__}.{type(model).__name__}",
+        forecast_horizon_days=7,
         feature_count=len(FEATURE_COLUMNS),
         feature_names=list(getattr(model, "feature_names_in_", FEATURE_COLUMNS)),
         feature_order=FEATURE_COLUMNS,
         model_sha256=model_sha256,
         sklearn_version=sklearn.__version__,
+        evaluation_metrics={
+            "status": "experimental",
+            "validation": {"mae": 124.89, "rmse": 163.67, "wmape": 18.92},
+            "test": {"mae": 131.23, "rmse": 173.14, "wmape": 18.19},
+        },
     )
 
 

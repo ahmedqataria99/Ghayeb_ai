@@ -163,7 +163,10 @@ def test_model_info(client):
     response = client.get("/v1/model-info")
     assert response.status_code == 200
     body = response.json()
+    assert body["model_name"] == "HistGradientBoostingRegressor"
+    assert body["forecast_horizon_days"] == 7
     assert body["feature_count"] == 14
+    assert body["evaluation_metrics"]["status"] == "experimental"
     assert body["model_sha256"] == sha256(MODEL_PATH.read_bytes()).hexdigest()
 
 
