@@ -262,6 +262,14 @@ npx vercel@latest --prod
 
 Vercel authentication must be completed through the official CLI or dashboard when prompted. Do not commit credentials or tokens.
 
+## Production status
+
+Production URL: `https://ghayeb-plivdzhdb-ahmed-qataria.vercel.app`
+
+Official Flutter integration documentation: [GHAYEB_AI_API_DOCUMENTATION.md](GHAYEB_AI_API_DOCUMENTATION.md)
+
+Production health, model information, forecast, batch, and invalid-horizon checks were tested against this URL. Vercel deployment protection was disabled so Flutter/API clients can access the service.
+
 ## Production requirements remaining
 
-The local API still requires production infrastructure decisions that are outside this implementation: HTTPS/TLS, authentication and authorization, persistent request logging, rate limiting, secret management, monitored artifact storage, container/runtime configuration, health probes, and deployment secrets. No Vercel deployment or GitHub push has been performed.
+The public API still requires secure server-verifiable authentication and organization authorization, CORS restrictions, persistent request logging, rate limiting, secret management, artifact monitoring, health probes, and serverless observability. No Firebase Authentication or Flutter application changes were made.
