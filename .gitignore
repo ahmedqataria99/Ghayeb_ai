@@ -1,0 +1,22 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Development data and notebooks
+Ghayeb_Ai.ipynb
+sales_data.csv
+data/
+
+# Local and temporary files
+.env
+.env.*
+!.env.example
+*.log
+*.tmp
+.pytest-final.txt
+
+# Editors
+.vscode/
+.idea/
